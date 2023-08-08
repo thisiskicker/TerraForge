@@ -1,0 +1,25 @@
+name: build app images
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'app1/**'
+      - 'app2/**'
+
+jobs:
+  build_images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: build app1 image
+        working-directory: app1
+        run: docker build -t app1 -f Dockerfile .
+
+      - name: build app2 image
+        working-directory: app2
+        run: docker build -t app2 -f Dockerfile .
