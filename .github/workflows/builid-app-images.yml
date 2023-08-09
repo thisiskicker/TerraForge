@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - 'app1/**'
-    #   - 'app2/**'
+    paths:
+      - 'app1/**'
+      - 'app2/**'
 
 env:
   REGISTRY: ghcr.io
@@ -15,6 +15,7 @@ env:
 jobs:
   build_app1:
     runs-on: ubuntu-latest
+    #TODO configure buildx ono selfhosted runner
     #runs-on: [self-hosted]
 
     permissions:
@@ -48,6 +49,7 @@ jobs:
  
   build_app2:
     runs-on: ubuntu-latest
+    #TODO configure buildx ono selfhosted runner
     #runs-on: [self-hosted]
 
     permissions:
@@ -78,11 +80,3 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          
-# - name: build app1 image
-      #   working-directory: app1
-      #   run: docker build -t app1 -f Dockerfile .
-
-      # - name: build app2 image
-      #   working-directory: app2
-      #   run: docker build -t app2 -f Dockerfile .
