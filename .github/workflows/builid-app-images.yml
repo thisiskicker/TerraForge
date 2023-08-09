@@ -13,7 +13,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build_images:
+  build_app1:
     runs-on: ubuntu-latest
     #runs-on: [self-hosted]
 
@@ -45,8 +45,41 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+ 
+  build_app2:
+    runs-on: ubuntu-latest
+    #runs-on: [self-hosted]
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       
-      # - name: build app1 image
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-app2
+      
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: app2
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          
+# - name: build app1 image
       #   working-directory: app1
       #   run: docker build -t app1 -f Dockerfile .
 
