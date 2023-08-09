@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'app1/**'
-      - 'app2/**'
+    # paths:
+    #   - 'app1/**'
+    #   - 'app2/**'
 
 env:
   REGISTRY: ghcr.io
