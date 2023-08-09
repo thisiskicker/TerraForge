@@ -10,7 +10,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: terraforge #${{ github.repository }}
+  IMAGE_NAME: ${{ github.repository }}
 
 jobs:
   build_app1:
@@ -50,7 +50,8 @@ jobs:
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-app1:${{ github.sha }}'
+          #image-ref: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-app1:${{ github.sha }}'
+          image-ref: '${{ env.REGISTRY }}/thisiskicker/terraforge-app1:${{ github.sha }}'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
