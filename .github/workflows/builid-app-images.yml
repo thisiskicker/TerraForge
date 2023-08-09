@@ -51,7 +51,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           #image-ref: '${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}-app1:${{ github.sha }}'
-          image-ref: '${{ env.REGISTRY }}/thisiskicker/terraforge-app1:${{ github.sha }}'
+          image-ref: '${{ env.REGISTRY }}/thisiskicker/terraforge-app1:main'
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
