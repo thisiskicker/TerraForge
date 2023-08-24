@@ -1,20 +1,40 @@
-provider "helm" {
-  kubernetes {
-    config_path = "$HOME/.kube/config"
-  }
-}
-
-provider "kubectl" {
-  config_path = "$HOME/.kube/config"
-}
-
 #use helm to install kyverno
 resource "helm_release" "kyverno" {
   name       = "kyverno"
-  repository = "https://kyverno.gitlab.io/kyverno"
+  repository = "https://kyverno.github.io/kyverno/"
   chart      = "kyverno"
   namespace  = "kyverno"
+  create_namespace = true
 }
+
+#use helm to install linkerd crds
+resource "helm_release" "linkerd-crds" {
+  name       = "linkerd-crds"
+  repository = "https://helm.linkerd.io/stable/"
+  chart      = "linkerd-crds"
+  create_namespace = true
+}
+
+#use helm to install linkerd control plane
+resource "helm_release" "linkerd-control-plane" {
+  name       = "linkerd-control-plane"
+  repository = "https://helm.linkerd.io/stable/"
+  chart      = "linkerd-control-plane"
+  namespace = helm_release.linkerd-crds.namespace
+  set {
+    name  = "identityTrustAnchorsPEM"
+    value = tls_locally_signed_cert.issuer.ca_cert_pem
+  }
+  set {
+    name  = "identity.issuer.tls.crtPEM"
+    value = tls_locally_signed_cert.issuer.cert_pem
+  }
+  set {
+    name  = "identity.issuer.tls.keyPEM"
+    value = tls_private_key.issuer.private_key_pem
+  }
+}
+
 
 #download yaml for kured 1.14.0
 data "http" "kured_yaml" {
@@ -23,7 +43,7 @@ data "http" "kured_yaml" {
 
 #apply yaml to install kured 1.14.0
 resource "kubectl_manifest" "kured" {
-  yaml_body = data.http.kured_yaml.body
+  yaml_body = data.http.kured_yaml.response_body
 }
 
 #download yaml for tekton
@@ -33,5 +53,5 @@ data "http" "tekton_yaml" {
 
 #apply yaml to install tekton
 resource "kubectl_manifest" "tekton" {
-  yaml_body = data.http.tekton_yaml.body
+  yaml_body = data.http.tekton_yaml.response_body
 }
