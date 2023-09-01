@@ -9,10 +9,10 @@ terraform {
 
 provider "helm" {
   kubernetes {
-    config_content = terraform.workspace.var.kconfig
+    config_path = "${path.module}/kconfig"
   }
 }
 
 provider "kubectl" {
-  config_content = terraform.workspace.var.kconfig
+  config_path = "${path.module}/kconfig"
 }
