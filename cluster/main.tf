@@ -1,6 +1,9 @@
 resource "azurerm_resource_group" "rg" {
   name = var.resource_group_name
   location = var.location
+  tags = {
+    app = "terraforge"
+  }
 }
 resource "azurerm_kubernetes_cluster" "aks" {
   name = var.cluster_name
@@ -17,6 +20,9 @@ resource "azurerm_kubernetes_cluster" "aks" {
     #availability_zones = [1, 2, 3]
     enable_auto_scaling = false
     vnet_subnet_id        = azurerm_subnet.aks-default.id
+    tags = {
+      app = "terraforge"
+    }
   }
   identity {
     type = "SystemAssigned"

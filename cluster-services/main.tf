@@ -1,12 +1,3 @@
-#use helm to install kyverno
-resource "helm_release" "kyverno" {
-  name       = "kyverno"
-  repository = "https://kyverno.github.io/kyverno/"
-  chart      = "kyverno"
-  namespace  = "kyverno"
-  create_namespace = true
-}
-
 #use helm to install linkerd crds
 resource "helm_release" "linkerd-crds" {
   name       = "linkerd-crds"
@@ -35,6 +26,33 @@ resource "helm_release" "linkerd-control-plane" {
   }
 }
 
+#download yaml for certmanager
+data "http" "certmanager_yaml" {
+  url = "https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml"
+}
+
+#apply yaml for certmanager crds
+resource "kubectl_manifest" "certmanager_crd" {
+  yaml_body = data.http.certmanager_yaml.response_body
+}
+
+# #use helm to install cert nginx
+# resource "helm_release" "ingress-nginx" {
+#   name       = "ingress-nginx"
+#   repository = "https://kubernetes.github.io/ingress-nginx"
+#   chart      = "ingress-nginx"
+#   namespace  = "ingress"
+#   create_namespace = true
+# }
+
+#use helm to install kyverno
+resource "helm_release" "kyverno" {
+  name       = "kyverno"
+  repository = "https://kyverno.github.io/kyverno/"
+  chart      = "kyverno"
+  namespace  = "kyverno"
+  create_namespace = true
+}
 
 #download yaml for kured 1.14.0
 data "http" "kured_yaml" {
