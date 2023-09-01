@@ -4,10 +4,10 @@ variable "kconfig" {
     sensitive = true
 }
 
-variable "kcontext" {
-    type = string
-    default = ""
-}
+# variable "kcontext" {
+#     type = string
+#     default = ""
+# }
 
 resource "local_sensitive_file" "kconfig_file" {
     content = var.kconfig

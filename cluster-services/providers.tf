@@ -15,5 +15,5 @@ provider "helm" {
 
 provider "kubectl" {
   config_path = "${path.module}/kconfig"
-  config_context = var.kcontext
+  # config_context = var.kcontext
 }
