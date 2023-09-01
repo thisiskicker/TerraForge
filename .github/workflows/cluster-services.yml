@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - cluster-services
+    # paths:
+    #   - cluster-services
 
 env:
   TF_CLOUD_ORGANIZATION: "example-org-9d7232"
