@@ -1,9 +1,10 @@
-variable "kconfig" {
-    type = string
-    default = ""
-}
+# variable "kconfig" {
+#     type = string
+#     default = ""
+#     sensitive = true
+# }
 
-resource "local_sensitive_file" "kconfig" {
-    content = terraform.workspace.var.kconfig
+resource "local_sensitive_file" "kconfig_file" {
+    content = var.kconfig
     filename = "${path.module}/kconfig"
 }
