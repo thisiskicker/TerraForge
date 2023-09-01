@@ -10,6 +10,12 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: main
 
+image2:
+  repository: ghcr.io/thisiskicker/terraforge-app2
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: main
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""

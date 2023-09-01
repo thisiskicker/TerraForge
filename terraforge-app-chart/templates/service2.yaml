@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "terraforge-app.fullname" . }} "-2"
+  labels:
+    {{- include "terraforge-app.labels" . | nindent 4 }} "-2"
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "terraforge-app.selectorLabels" . | nindent 4 }} "-2"
