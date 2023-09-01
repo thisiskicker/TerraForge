@@ -7,11 +7,6 @@ terraform {
   }
 }
 
-resource "local_sensitive_file" "kconfig_file" {
-    content = var.kconfig
-    filename = "${path.module}/kconfig"
-}
-
 provider "helm" {
   kubernetes {
     config_path = "${path.module}/kconfig"
