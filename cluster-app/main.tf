@@ -16,3 +16,13 @@ resource "kubernetes_manifest" "cluster_issuer" {
 resource "kubernetes_manifest" "terraforge_cert" {
   manifest = file("${path.module}/../cert-files/certificate-issuer.yaml")
 }
+
+resource "kubernetes_secret" "regcred" {
+  metadata {
+    name = "regcred"
+  }
+  data = {
+    .dockerconfigjson = "var.REGCRED"
+  }
+  type = "kubernetes.io/dockerconfigjson"
+}
