@@ -6,6 +6,7 @@ resource "azurerm_resource_group" "rg" {
   }
 }
 
+#create AKS cluster
 resource "azurerm_kubernetes_cluster" "aks" {
   name = var.cluster_name
   kubernetes_version = var.kubernetes_version
