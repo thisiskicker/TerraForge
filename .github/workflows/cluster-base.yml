@@ -23,7 +23,7 @@ jobs:
     steps:
       - name: Use variables
         run: |
-          echo "TF_CLOUD_ORGANIZATION : TF_CLOUD_ORGANIZATION"
+          echo "TF_CLOUD_ORGANIZATION : $TF_CLOUD_ORGANIZATION"
 
       # - name: Checkout
       #   uses: actions/checkout@v3
