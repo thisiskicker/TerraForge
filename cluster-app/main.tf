@@ -17,6 +17,7 @@ resource "kubernetes_manifest" "terraforge_cert" {
   manifest = file("${path.module}/../cert-files/certificate-issuer.yaml")
 }
 
+#create image pull secret for custom images
 resource "kubernetes_secret" "regcred" {
   metadata {
     name = "regcred"
