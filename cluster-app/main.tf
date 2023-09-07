@@ -23,7 +23,7 @@ resource "kubernetes_secret" "regcred" {
     name = "regcred"
   }
   data = {
-    .dockerconfigjson = "var.REGCRED"
+    ".dockerconfigjson" = "var.REGCRED"
   }
   type = "kubernetes.io/dockerconfigjson"
 }
