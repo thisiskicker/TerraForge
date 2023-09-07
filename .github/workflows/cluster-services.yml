@@ -10,7 +10,7 @@ on:
 env:
   TF_CLOUD_ORGANIZATION: ${{ vars.TF_CLOUD_ORGANIZATION }}
   TF_API_TOKEN: "${{ secrets.TFTOKEN }}"
-  TF_WORKSPACE: ${{ TF_WORKSPACE }}
+  TF_WORKSPACE: TerraForge-Services
   CONFIG_DIRECTORY: "./cluster-services"
 
 jobs:
