@@ -36,14 +36,14 @@ resource "kubectl_manifest" "certmanager_crd" {
   yaml_body = data.http.certmanager_yaml.response_body
 }
 
-# #use helm to install cert nginx
-# resource "helm_release" "ingress-nginx" {
-#   name       = "ingress-nginx"
-#   repository = "https://kubernetes.github.io/ingress-nginx"
-#   chart      = "ingress-nginx"
-#   namespace  = "ingress"
-#   create_namespace = true
-# }
+#use helm to install cert nginx
+resource "helm_release" "ingress-nginx" {
+  name       = "ingress-nginx"
+  repository = "https://kubernetes.github.io/ingress-nginx"
+  chart      = "ingress-nginx"
+  namespace  = "ingress"
+  create_namespace = true
+}
 
 #use helm to install kyverno
 resource "helm_release" "kyverno" {
