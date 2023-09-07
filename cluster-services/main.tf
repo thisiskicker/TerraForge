@@ -26,14 +26,10 @@ resource "helm_release" "linkerd-control-plane" {
   }
 }
 
-#download yaml for certmanager
-data "http" "certmanager_yaml" {
-  url = "https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml"
-}
-
-#apply yaml for certmanager crds
+#apply yaml for certmanager
+#url = "https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml"
 resource "kubectl_manifest" "certmanager_crd" {
-  yaml_body = data.http.certmanager_yaml.response_body
+  yaml_body = file("${path.module}/cert-manager.yaml")
 }
 
 #use helm to install cert nginx
@@ -54,22 +50,14 @@ resource "helm_release" "kyverno" {
   create_namespace = true
 }
 
-#download yaml for kured 1.14.0
-data "http" "kured_yaml" {
-  url = "https://github.com/kubereboot/kured/releases/download/1.14.0/kured-1.14.0-dockerhub.yaml"
-}
-
 #apply yaml to install kured 1.14.0
+#url = "https://github.com/kubereboot/kured/releases/download/1.14.0/kured-1.14.0-dockerhub.yaml"
 resource "kubectl_manifest" "kured" {
-  yaml_body = data.http.kured_yaml.response_body
-}
-
-#download yaml for tekton
-data "http" "tekton_yaml" {
-  url = "https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml"
+  yaml_body = file("${path.module}/kured-1.14.0-dockerhub.yaml")
 }
 
 #apply yaml to install tekton
+#url = "https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml"
 resource "kubectl_manifest" "tekton" {
-  yaml_body = data.http.tekton_yaml.response_body
+  yaml_body = file("${path.module}/tekton.yaml")
 }
