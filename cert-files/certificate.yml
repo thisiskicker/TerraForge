@@ -10,6 +10,6 @@ spec:
     kind: ClusterIssuer  # Set to "Issuer" if it's not a ClusterIssuer
 
   #note this will have to be changed for the actual ip of the ingress
-  commonName: terraforge.10.0.0.1.nip.io  # Common Name (CN) for the certificate
+  commonName: terraforge.20.253.76.134.nip.io  # Common Name (CN) for the certificate
   dnsNames:
-    - terraforge.10.0.0.1.nip.io  # Additional DNS names (SANs) for the certificate
+    - terraforge.20.253.76.134.nip.io  # Additional DNS names (SANs) for the certificate
