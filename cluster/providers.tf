@@ -7,6 +7,7 @@ terraform {
   }
 }
 
+#provider for azure
 provider "azurerm" {
   features {}
 }
