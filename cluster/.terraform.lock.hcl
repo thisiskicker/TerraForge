@@ -2,21 +2,21 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/hashicorp/azurerm" {
-  version     = "3.66.0"
+  version     = "3.71.0"
   constraints = "~> 3.0"
   hashes = [
-    "h1:VyLdfaU38GjvSBwm1aVxgNP7MujU17gH42bFLcUvDS0=",
-    "zh:02f1b55836f3ca38d1203c0fb748c2f9de3436c429814b1d901143e32ca2e9fc",
-    "zh:32410ab954c3812c15419c2a5d54562bcd0aaaff72127e6077ed2db91c3329ea",
-    "zh:342c5e097f05d284933a64b5fb8e2c1ad44a33b3be045fcc66653014d2d43900",
-    "zh:498f4c3526a4564cb8c8d19fbecb82362691719c163bf5051c433abf34da20e6",
-    "zh:5f16dceafd3478ec53f426074585ff917a574995696ab6ca8562e584abc6b19d",
-    "zh:78574e96d88fe00a74d00fd4b3ee2f50ba9669ad2535e5133593ca6d63646e9c",
-    "zh:902a465eb925eb691ecdb91cde2ac0838146baa76b741d282ac222c1853c7cdd",
-    "zh:c6d48c1ad9c719e52ea036ed83ef1b6ed95d1601aa57b3f8531bdca44ff40eb4",
-    "zh:e5746a1eb89b659a407cb35375cfd1bde153d24b63ea3ebd10973b60dd345cbd",
-    "zh:e6dbf4ad979e1f95d942a50a6f49d38ade502a200c2bdc849e50503d6219a223",
+    "h1:vhmOvVQgCyxXeS25wKuPTNpOAAtocPj5faL1yFS/Bcc=",
+    "zh:06f0d225b1711dfad256ff33134f878acc8f84624d9da66b075b075cc4d75892",
+    "zh:09ff74056818babe02ea5a633bffe2b8223eaf79916dc1db169651ef7725c22f",
+    "zh:27687e0f8458e6d88ebea94352eb523f56e8f5cdc468268af8f38dc4a4265bf4",
+    "zh:2d81bfab3c6a9b897fa8fbb5256c9e5a944e6ecbf7f73a2a3e2b53a2c4fbcfc5",
+    "zh:4cfc744cfc37aeeeecd82800c70e2591b38447af9e3c51bcbf06a5efe842ed65",
+    "zh:734fbb81508b264f772a076338ddf1c7b25534d2007a1738a7d55587478ed258",
+    "zh:9a5502c364f58073599fff8cdd8adc32e7f7bcd00a4d9b57d2fff678fd8a8319",
+    "zh:9bc528f7e78dbfd106f94b741b68dedd3dd3d31c3defcddcc1972c8e52a6b7db",
+    "zh:c30db03d877f9a7ae0c19d3fd338bbf95cdddbf6df1023709dbfa99689abac14",
+    "zh:c51d4065145b8f4ca45fc9a0f3ca7f2d933bc0302af2eead74f3ce64a9221ae8",
+    "zh:e23029fc7f81723795d7da770131adb1ce6f4d32f0a57eb75d47e036a0a19833",
     "zh:f569b65999264a9416862bca5cd2a6177d94ccb0424f3a4ef424428912b9cb3c",
-    "zh:f5d4af4e0011e9fa9be055e6efee1cc8be10f0fc1092bab921de7ebbb26ed4c4",
   ]
 }
