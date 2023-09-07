@@ -12,7 +12,7 @@ env:
   TF_CLOUD_ORGANIZATION: ${{ vars.TF_CLOUD_ORGANIZATION }}
   TF_API_TOKEN: "${{ secrets.TFTOKEN }}"
   TF_WORKSPACE: TerraForge-App
-  CONFIG_DIRECTORY: "./cluster-services"
+  CONFIG_DIRECTORY: "./cluster-app"
 
 jobs:
   terraform:
