@@ -1,3 +1,4 @@
+#This file generates all the certificates needed to install linkerd
 resource "tls_private_key" "ca" {
   algorithm   = "ECDSA"
   ecdsa_curve = "P256"
