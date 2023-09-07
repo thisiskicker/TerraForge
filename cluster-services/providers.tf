@@ -35,6 +35,7 @@ provider "helm" {
 }
 
 provider "kubectl" {
+  load_config_file = false
   host                   = data.azurerm_kubernetes_cluster.cluster.kube_config.0.host
   username               = data.azurerm_kubernetes_cluster.cluster.kube_config.0.username
   password               = data.azurerm_kubernetes_cluster.cluster.kube_config.0.password
