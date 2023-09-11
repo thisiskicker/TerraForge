@@ -13,7 +13,7 @@ resource "helm_release" "terraforge-app" {
   name       = "terraforge-app"
   repository = "${path.module}"
   chart      = "terraforge-app-chart"
-  namespace = kubernetes_namespace.terraforge.metadata.name
+  namespace = kubernetes_namespace.terraforge.metadata[0].name
   create_namespace = true
 }
 
@@ -33,7 +33,7 @@ resource "helm_release" "terraforge-app" {
 resource "kubernetes_secret" "regcred" {
   metadata {
     name = "regcred"
-    namespace = kubernetes_namespace.terraforge.metadata.name
+    namespace = kubernetes_namespace.terraforge.metadata[0].name
   }
   data = {
     ".dockerconfigjson" = var.REGCRED
