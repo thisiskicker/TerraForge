@@ -9,15 +9,13 @@ resource "helm_release" "terraforge-app" {
 
 #create cluster issuer
 resource "kubectl_manifest" "cluster_issuer" {
-  # yaml_body = file("${path.module}/cert-files/cluster-issuer.yaml")
-  yaml_body = file("${path.module}/cluster-issuer.yaml")
+  yaml_body = file("${path.module}/cert-files/cluster-issuer.yml")
+  
 }
 
 #create ssl cert
 resource "kubectl_manifest" "terraforge_cert" {
-  # yaml_body = file("${path.module}/cert-files/certificate-issuer.yaml")
-  yaml_body = file("${path.module}/certificate-issuer.yaml")
-
+  yaml_body = file("${path.module}/cert-files/certificate-issuer.yml")
 }
 
 #create image pull secret for custom images
