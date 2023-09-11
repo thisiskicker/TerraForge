@@ -23,6 +23,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     #availability_zones = [1, 2, 3]
     enable_auto_scaling = true
     max_count = 3
+    min_COUNT = 1
     vnet_subnet_id        = azurerm_subnet.aks-default.id
     #needs to be set if changing default node pool
     #only 12 characters: lower case & numbers
