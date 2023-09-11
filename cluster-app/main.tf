@@ -19,6 +19,7 @@
 # }
 
 #create image pull secret for custom images
+#it just needs the config file unencoded
 resource "kubernetes_secret" "regcred" {
   metadata {
     name = "regcred"
