@@ -2,7 +2,7 @@ resource "kubernetes_namespace" "terraforge" {
   metadata {
     annotations = {
       name = "terraforge"
-      linkerd.io/inject = "enabled"
+      "linkerd.io/inject" = "enabled"
     }
     name = "terraforge"
   }
@@ -13,7 +13,7 @@ resource "helm_release" "terraforge-app" {
   name       = "terraforge-app"
   repository = "${path.module}"
   chart      = "terraforge-app-chart"
-  namespace = kubernetes_namespace.terraforge.name
+  namespace = kubernetes_namespace.terraforge.metadata.name
   create_namespace = true
 }
 
@@ -33,7 +33,7 @@ resource "helm_release" "terraforge-app" {
 resource "kubernetes_secret" "regcred" {
   metadata {
     name = "regcred"
-    namespace = kubernetes_namespace.terraforge.name
+    namespace = kubernetes_namespace.terraforge.metadata.name
   }
   data = {
     ".dockerconfigjson" = var.REGCRED
