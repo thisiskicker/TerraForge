@@ -21,14 +21,14 @@ resource "helm_release" "terraforge-app" {
 resource "kubectl_manifest" "cluster_issuer" {
   yaml_body = file("${path.module}/cert-files/cluster-issuer.yml")
   # namespace = kubernetes_namespace.terraforge.metadata[0].name
-  namespace = terraforge
+  namespace = "terraforge"
 }
 
 #create ssl cert
 resource "kubectl_manifest" "terraforge_cert" {
   yaml_body = file("${path.module}/cert-files/certificate.yml")
   # namespace = kubernetes_namespace.terraforge.metadata[0].name
-  namespace = terraforge
+  namespace = "terraforge"
 }
 
 #create image pull secret for custom images
