@@ -3,7 +3,7 @@ resource "helm_release" "terraforge-app" {
   name       = "terraforge-app"
   repository = "../terraforge-app-chart"
   chart      = "terraforge-app"
-  namespace = terraforge
+  namespace = "terraforge"
   create_namespace = true
 }
 
