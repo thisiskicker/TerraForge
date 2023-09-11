@@ -23,10 +23,10 @@ resource "helm_release" "terraforge-app" {
 resource "kubernetes_secret" "regcred" {
   metadata {
     name = "regcred"
+    namespace = helm_release.terraforge-app.namespace
   }
   data = {
     ".dockerconfigjson" = var.REGCRED
   }
   type = "kubernetes.io/dockerconfigjson"
-  namespace = helm_release.terraforge-app.namespace
 }
