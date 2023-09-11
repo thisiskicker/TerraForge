@@ -9,12 +9,12 @@ resource "helm_release" "terraforge-app" {
 
 #create cluster issuer
 resource "kubernetes_manifest" "cluster_issuer" {
-  manifest = file("${path.module}/../cert-files/cluster-issuer.yaml")
+  manifest = file("${path.module}/cert-files/cluster-issuer.yaml")
 }
 
 #create ssl cert
 resource "kubernetes_manifest" "terraforge_cert" {
-  manifest = file("${path.module}/../cert-files/certificate-issuer.yaml")
+  manifest = file("${path.module}/cert-files/certificate-issuer.yaml")
 }
 
 #create image pull secret for custom images
