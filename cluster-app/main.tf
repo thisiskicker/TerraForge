@@ -10,12 +10,12 @@ resource "helm_release" "terraforge-app" {
 #create cluster issuer
 resource "kubectl_manifest" "cluster_issuer" {
   yaml_body = file("${path.module}/cert-files/cluster-issuer.yml")
-  
 }
 
 #create ssl cert
 resource "kubectl_manifest" "terraforge_cert" {
   yaml_body = file("${path.module}/cert-files/certificate.yml")
+  namespace = helm_release.terraforge-app.namespace
 }
 
 #create image pull secret for custom images
