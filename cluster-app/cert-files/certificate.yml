@@ -2,7 +2,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: terraforge-certificate
-  namespace: terraforge-namespace
 spec:
   secretName: terraforge-tls-secret  # Name of the Kubernetes Secret to store the TLS certificate
   issuerRef:
