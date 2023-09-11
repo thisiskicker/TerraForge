@@ -1,11 +1,11 @@
-# #use helm to install the terraforge app
-# resource "helm_release" "terraforge-app" {
-#   name       = "terraforge-app"
-#   repository = "${path.module}/terraforge-app-chart"
-#   chart      = "terraforge-app"
-#   namespace = "terraforge"
-#   create_namespace = true
-# }
+#use helm to install the terraforge app
+resource "helm_release" "terraforge-app" {
+  name       = "terraforge-app"
+  repository = "${path.module}/terraforge-app-chart"
+  chart      = "terraforge-app"
+  namespace = "terraforge"
+  create_namespace = true
+}
 
 # #create cluster issuer
 # resource "kubectl_manifest" "cluster_issuer" {
