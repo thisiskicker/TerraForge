@@ -21,7 +21,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     vm_size = "standard_B2s"
     type = "VirtualMachineScaleSets"
     #availability_zones = [1, 2, 3]
-    enable_auto_scaling = false
+    enable_auto_scaling = true
     vnet_subnet_id        = azurerm_subnet.aks-default.id
     #needs to be set if changing default node pool
     #only 12 characters: lower case & numbers
