@@ -1,8 +1,8 @@
 #use helm to install the terraforge app
 resource "helm_release" "terraforge-app" {
   name       = "terraforge-app"
-  repository = "${path.module}/terraforge-app-chart"
-  chart      = "terraforge-app"
+  repository = "${path.module}"
+  chart      = "terraforge-app-chart"
   namespace = "terraforge"
   create_namespace = true
 }
