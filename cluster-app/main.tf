@@ -15,7 +15,7 @@ resource "kubectl_manifest" "cluster_issuer" {
 
 #create ssl cert
 resource "kubectl_manifest" "terraforge_cert" {
-  yaml_body = file("${path.module}/cert-files/certificate-issuer.yml")
+  yaml_body = file("${path.module}/cert-files/certificate.yml")
 }
 
 #create image pull secret for custom images
