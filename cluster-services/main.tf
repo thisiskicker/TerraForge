@@ -26,11 +26,11 @@ resource "helm_release" "linkerd-control-plane" {
   }
 }
 
-#apply yaml for certmanager
-#url = "https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml"
-resource "kubectl_manifest" "certmanager_crd" {
-  yaml_body = file("${path.module}/cert-manager.yaml")
-}
+# #apply yaml for certmanager
+# #url = "https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml"
+# resource "kubectl_manifest" "certmanager_crd" {
+#   yaml_body = file("${path.module}/cert-manager.yaml")
+# }
 
 #use helm to install cert nginx
 resource "helm_release" "ingress-nginx" {
