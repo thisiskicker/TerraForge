@@ -1,6 +1,7 @@
 resource "kubernetes_namespace" "terraforge" {
   metadata {
     annotations = {
+      name = "terraforge"
       linkerd.io/inject = "enabled"
     }
     name = "terraforge"
@@ -13,7 +14,7 @@ resource "helm_release" "terraforge-app" {
   repository = "${path.module}"
   chart      = "terraforge-app-chart"
   namespace = kubernetes_namespace.terraforge.name
-  #create_namespace = true
+  create_namespace = true
 }
 
 # #create cluster issuer
