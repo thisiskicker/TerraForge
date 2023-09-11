@@ -28,4 +28,5 @@ resource "kubernetes_secret" "regcred" {
     ".dockerconfigjson" = var.REGCRED
   }
   type = "kubernetes.io/dockerconfigjson"
+  namespace = helm_release.terraforge-app.namespace
 }
