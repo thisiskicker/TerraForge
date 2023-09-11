@@ -15,7 +15,7 @@ resource "kubernetes_namespace" "terraforge" {
 #   chart      = "terraforge-app-chart"
 #   namespace = kubernetes_namespace.terraforge.metadata[0].name
 #   create_namespace = true
-}
+# }
 
 # #create cluster issuer
 # resource "kubectl_manifest" "cluster_issuer" {
