@@ -23,7 +23,9 @@ resource "azurerm_kubernetes_cluster" "aks" {
     #availability_zones = [1, 2, 3]
     enable_auto_scaling = false
     vnet_subnet_id        = azurerm_subnet.aks-default.id
-    temporary_name_for_rotation = "terraforgestemp"
+    #needs to be set if changing default node pool
+    #only 12 characters: lower case & numbers
+    temporary_name_for_rotation = "terratemp"
     tags = {
       app = "terraforge"
     }
