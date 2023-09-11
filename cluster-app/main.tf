@@ -18,13 +18,13 @@
 #   namespace = helm_release.terraforge-app.namespace
 # }
 
-# #create image pull secret for custom images
-# resource "kubernetes_secret" "regcred" {
-#   metadata {
-#     name = "regcred"
-#   }
-#   data = {
-#     ".dockerconfigjson" = "var.REGCRED"
-#   }
-#   type = "kubernetes.io/dockerconfigjson"
-# }
+#create image pull secret for custom images
+resource "kubernetes_secret" "regcred" {
+  metadata {
+    name = "regcred"
+  }
+  data = {
+    ".dockerconfigjson" = "var.REGCRED"
+  }
+  type = "kubernetes.io/dockerconfigjson"
+}
