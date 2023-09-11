@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "terraforge-app.fullname" . }}"-2"
+  name: {{ include "terraforge-app.fullname" . }}-2
   labels:
-    {{- include "terraforge-app.labels" . | nindent 4 }}"-2"
+    {{- include "terraforge-app.labels" . | nindent 4 }}-2
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "terraforge-app.selectorLabels" . | nindent 6 }}"-2"
+      {{- include "terraforge-app.selectorLabels" . | nindent 6 }}-2
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "terraforge-app.selectorLabels" . | nindent 8 }}"-2"
+        {{- include "terraforge-app.selectorLabels" . | nindent 8 }}-2
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
@@ -28,7 +28,7 @@ spec:
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}"-2"
+        - name: {{ .Chart.Name }}-2
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image2.repository }}:{{ .Values.image2.tag | default .Chart.AppVersion }}"
