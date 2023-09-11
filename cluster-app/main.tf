@@ -1,10 +1,19 @@
+resource "kubernetes_namespace" "terraforge" {
+  metadata {
+    annotations = {
+      linkerd.io/inject = "enabled"
+    }
+    name = "terraforge"
+  }
+}
+
 #use helm to install the terraforge app
 resource "helm_release" "terraforge-app" {
   name       = "terraforge-app"
   repository = "${path.module}"
   chart      = "terraforge-app-chart"
-  namespace = "terraforge"
-  create_namespace = true
+  namespace = kubernetes_namespace.terraforge.name
+  #create_namespace = true
 }
 
 # #create cluster issuer
@@ -23,7 +32,7 @@ resource "helm_release" "terraforge-app" {
 resource "kubernetes_secret" "regcred" {
   metadata {
     name = "regcred"
-    namespace = helm_release.terraforge-app.namespace
+    namespace = kubernetes_namespace.terraforge.name
   }
   data = {
     ".dockerconfigjson" = var.REGCRED
