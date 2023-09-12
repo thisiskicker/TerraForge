@@ -26,12 +26,13 @@ resource "helm_release" "linkerd-control-plane" {
   }
 }
 
-#apply yaml for certmanager
+#read yaml for certmanager
 #url = "https://github.com/cert-manager/cert-manager/releases/download/v1.12.0/cert-manager.yaml"
 data "kubectl_file_documents" "certmanager_docs" {
     content = file("${path.module}/cert-manager.yaml")
 }
 
+#apply yaml file for cert managers
 resource "kubectl_manifest" "certmanager" {
   for_each  = data.kubectl_file_documents.certmanager_docs.manifests
   yaml_body = each.value
