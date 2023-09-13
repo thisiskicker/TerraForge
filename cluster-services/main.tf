@@ -45,6 +45,10 @@ resource "helm_release" "ingress-nginx" {
   chart      = "ingress-nginx"
   namespace  = "ingress"
   create_namespace = true
+  set {
+    name = "controller.service.annotations.service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"
+    value = "healthz"
+  }
 }
 
 #use helm to install kyverno
