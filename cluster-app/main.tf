@@ -1,3 +1,4 @@
+#create application namespace with linkerd enabled
 resource "kubernetes_namespace" "terraforge" {
   metadata {
     annotations = {
@@ -44,6 +45,7 @@ resource "kubernetes_secret" "regcred" {
     namespace = kubernetes_namespace.terraforge.metadata[0].name
   }
   data = {
+    #read docker config from Terraform Cloud workspace variable
     ".dockerconfigjson" = var.REGCRED
   }
   type = "kubernetes.io/dockerconfigjson"

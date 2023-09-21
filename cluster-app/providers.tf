@@ -15,14 +15,16 @@ terraform {
 provider "azurerm" {
   # skip_provider_registration = true # This is only required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers.
   features {}
-  # use_msi = true
 }
 
+#use pull cluster details from azure
+#this info is used to configure kubernetes access for terraform modules
 data "azurerm_kubernetes_cluster" "cluster" {
-  name                = "terraforge-cluster"
-  resource_group_name = "terraforge-jake"
+  name                = "terraforge-cluster"  #CHANGE ME for deployment
+  resource_group_name = "terraforge-jake"     #CHANGE ME for deployment
 }
 
+#configure access to kubernetes for helm
 provider "helm" {
   kubernetes {
     host                   = data.azurerm_kubernetes_cluster.cluster.kube_config.0.host
@@ -34,6 +36,7 @@ provider "helm" {
   }
 }
 
+#configure access to kubernetes to apply yalm configs to cluster
 provider "kubectl" {
   load_config_file = false
   host                   = data.azurerm_kubernetes_cluster.cluster.kube_config.0.host
@@ -44,6 +47,7 @@ provider "kubectl" {
   cluster_ca_certificate = base64decode(data.azurerm_kubernetes_cluster.cluster.kube_config.0.cluster_ca_certificate)
 }
 
+#configure access to kubernetes for helm to create kubernetes resources
 provider kubernetes {
   host                   = data.azurerm_kubernetes_cluster.cluster.kube_config.0.host
   username               = data.azurerm_kubernetes_cluster.cluster.kube_config.0.username

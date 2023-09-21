@@ -1,3 +1,5 @@
+#tls certificate for Terraforge App
+#Make sure to change the commonName and dnsNames to the domain being used.
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
