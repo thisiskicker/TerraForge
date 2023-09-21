@@ -20,7 +20,8 @@ resource "helm_release" "terraforge-app" {
 #create staging cluster issuer
 resource "kubectl_manifest" "cluster_issuer_staging" {
   yaml_body = file("${path.module}/cert-files/cluster-issuer-staging.yml")
-  override_namespace = kubernetes_namespace.terraforge.metadata[0].name}
+  override_namespace = kubernetes_namespace.terraforge.metadata[0].name
+}
 
 #create cluster issuer
 resource "kubectl_manifest" "cluster_issuer" {
