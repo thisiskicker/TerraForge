@@ -60,7 +60,7 @@ ingress:
         - path: /
           pathType: Prefix
   tls:
-  - secretName: terraforge-certificate
+  - secretName: terraforge-tls-secret
     hosts:
       - terraforge.20.242.226.26.nip.io
 resources: {}
