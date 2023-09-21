@@ -1,4 +1,4 @@
-# Deployment Documentation
+# Terraforge Notes
 
 ## Chainguard Container Image
 
@@ -9,7 +9,7 @@
 
 - Adding the Trivy scanner for container images is a straightforward process. However, it's important to note that the value for `image-ref` in the Trivy scanner step should not contain any uppercase letters.
 
-## Azure Authorization
+## Azure - Authorization
 
 - For authentication in Azure, it's recommended to use app registration since Terraform Cloud is hosted outside of Azure.
 - Managed Service Identities (MSIs) only function within Azure or GitHub environments.
