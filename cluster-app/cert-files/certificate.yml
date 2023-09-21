@@ -5,7 +5,7 @@ metadata:
 spec:
   secretName: terraforge-tls-secret  # Name of the Kubernetes Secret to store the TLS certificate
   issuerRef:
-    name: letsencrypt-staging  # Name of your Issuer or ClusterIssuer
+    name: letsencrypt  # Name of your Issuer or ClusterIssuer
     kind: ClusterIssuer  # Set to "Issuer" if it's not a ClusterIssuer
 
   #note this will have to be changed for the actual ip of the ingress
