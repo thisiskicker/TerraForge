@@ -22,3 +22,5 @@ TerraForge simplifies the deployment and management of the web application by pr
 ## Getting Started
 
 To get started with TerraForge, follow the steps in the following documentation: [Terraforge Deployment Doc](DEPLOYMENT.md)
+
+For important information and potential quirks, refer to the [NOTES.md](NOTES.md) file.
