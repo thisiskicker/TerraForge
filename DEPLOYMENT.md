@@ -62,8 +62,8 @@ c. Modify `cluster-app/terraforge-app-chart/values.yaml`:
 
 Run the following steps in GitHub Actions:
 
-a. Run Cluster-Base Workflow.
-
-b. Run Cluster-Services Workflow.
-
-c. Run Cluster-App Workflow.
+    a. Run Cluster-Base Workflow.
+    
+    b. Run Cluster-Services Workflow.
+    
+    c. Run Cluster-App Workflow.
