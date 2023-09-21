@@ -2,12 +2,16 @@
 
 ## Requirements
 
-- GitHub Personal Access Token (PAT) for image pull secrets
-- GitHub PAT with read repository and upload images permissions
+- GitHub Personal Access Tokens (PATs):
+    - For image pull secrets
+    - To read repositories and upload images
+      
 - Terraform Cloud Credentials
+  
 - Azure Service Principle
+  
 - Domain
-
+  
 ## Instructions
 
 ### 1. Configure Terraform Cloud
