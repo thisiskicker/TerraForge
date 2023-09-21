@@ -1,21 +1,30 @@
-Chainguard container image
-    chainguard already has a distroless nginx image.
-    it can be used as a drop in replacement for the generic nginx image.
-    since it's a distroless image port 1-1024 can't be used it's configured to use port 8080.
+# Deployment Documentation
 
-Trivy - github actions
-    Adding the Trivy scanner for the container images was not too difficult, but there was one thing that caused a slight issue. The value image-ref for the trivy scanner step must not contain uppercase letters.
+## Chainguard Container Image
 
-Azure - authorization
-    Use app registration for authentication because Terraform Cloud is hosted outside of Azure.
-    Managed Service IDs only work from Azure or Github.
-    It turns out trying to pipe in the kubeconfig through terraform cloud is a bit more troublesome and fragile.
-    Need to use a service principle if you're using the azure api from outsite of azure or github.
+- The Chainguard container image is based on a distroless nginx image, designed to be a drop-in replacement for the generic nginx image.
+- Note that due to its distroless nature, ports 1-1024 cannot be used. Instead, it is configured to use port 8080.
 
-Terraform
-    The TLS provider in terraform makes installing linkerd significantly easier. It allows me to generate and manage the ca and root tls certificates within terraform instead of generating the certificates and pointing to the files.
-    Terraform cloud does not seem to allow the data http module to download files straight from the internet.
-    The option load_config_file = false is important to have when using the kubectl module when not using a kubeconfig file.
+## Trivy - GitHub Actions
 
-    ```provider "kubectl" {
-    load_config_file = false```
+- Adding the Trivy scanner for container images is a straightforward process. However, it's important to note that the value for `image-ref` in the Trivy scanner step should not contain any uppercase letters.
+
+## Azure Authorization
+
+- For authentication in Azure, it's recommended to use app registration since Terraform Cloud is hosted outside of Azure.
+- Managed Service Identities (MSIs) only function within Azure or GitHub environments.
+- When trying to pass the kubeconfig through Terraform Cloud, it can be a bit more challenging and less reliable. In such cases, using a service principal is advised, especially when interacting with the Azure API from outside of Azure or GitHub.
+
+## Terraform
+
+- The TLS provider in Terraform simplifies the installation of Linkerd by allowing the generation and management of CA and root TLS certificates directly within Terraform, eliminating the need to manually generate and reference certificate files.
+
+- It's worth noting that Terraform Cloud may not permit the `http` module to download files directly from the internet. In such cases, you should save the files into the repository and directly reference the tracked files for a seamless integration.
+
+- When using the `kubectl` module without a kubeconfig file, ensure to include the option `load_config_file = false` in the provider configuration:
+
+```hcl
+provider "kubectl" {
+  load_config_file = false
+}
+```
