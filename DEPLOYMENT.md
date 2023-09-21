@@ -1,4 +1,4 @@
-# Web App Deployment on Azure using Terraform
+# Web App Deployment on Azure using Terraform Cloud
 
 ## Requirements
 
