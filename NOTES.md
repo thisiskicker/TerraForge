@@ -23,7 +23,7 @@
 
 - When using the `kubectl` module without a kubeconfig file, ensure to include the option `load_config_file = false` in the provider configuration:
 
-```
+```hcl
 provider "kubectl" {
   load_config_file = false
 }
