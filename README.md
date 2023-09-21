@@ -31,4 +31,4 @@ To get started with TerraForge, follow these steps:
 
 4. **Cluster App Configuration**: Configure SSL certificates for secure communication. Install and configure TerraForge for hosting your web application content.
 
-[Teraforge Deployment Doc](DEPLOYMENT.md)
+[Terraforge Deployment Doc](DEPLOYMENT.md)
