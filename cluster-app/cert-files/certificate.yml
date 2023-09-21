@@ -10,7 +10,9 @@ spec:
     name: letsencrypt  # Name of your Issuer or ClusterIssuer
     kind: ClusterIssuer  # Set to "Issuer" if it's not a ClusterIssuer
 
-  #note this will have to be changed for the actual ip of the ingress
-  commonName: terraforge.20.242.226.26.nip.io  # Common Name (CN) for the certificate
+  #note this will have to be changed for the actual ip of the ingress if using nip.io
+  # Common Name (CN) for the certificate
+  commonName: terraforge.20.242.226.26.nip.io #CHANGE ME for deployment
   dnsNames:
-    - terraforge.20.242.226.26.nip.io  # Additional DNS names (SANs) for the certificate
+    # Additional DNS names (SANs) for the certificate
+    - terraforge.20.242.226.26.nip.io  #CHANGE ME for deployment
