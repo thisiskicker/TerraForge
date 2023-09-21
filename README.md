@@ -30,3 +30,5 @@ To get started with TerraForge, follow these steps:
 3. **Cluster Services**: Install the base services using TerraForge. This includes Linkerd for service mesh, Cert Manager for certificate management, Nginx Ingress for routing, Kyverno for policy management, Kured for automated node reboots, and Tekton for CI/CD.
 
 4. **Cluster App Configuration**: Configure SSL certificates for secure communication. Install and configure TerraForge for hosting your web application content.
+
+[Teraforge Deployment Doc](DEPLOYMENT.md)
