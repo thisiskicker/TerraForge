@@ -21,14 +21,4 @@ TerraForge simplifies the deployment and management of the web application by pr
 
 ## Getting Started
 
-To get started with TerraForge, follow these steps:
-
-1. **Terraform Cloud Configuration**: Before proceeding, configure Terraform Cloud with your repository to enable automated infrastructure deployment. Please refer to the [Terraform Cloud Documentation](https://www.terraform.io/docs/cloud/index.html) for details on setting up Terraform Cloud with your project.
-
-2. **Cluster Setup**: Create an AKS cluster in Azure. Ensure that the cluster meets your application's requirements, including scalability and availability.
-
-3. **Cluster Services**: Install the base services using TerraForge. This includes Linkerd for service mesh, Cert Manager for certificate management, Nginx Ingress for routing, Kyverno for policy management, Kured for automated node reboots, and Tekton for CI/CD.
-
-4. **Cluster App Configuration**: Configure SSL certificates for secure communication. Install and configure TerraForge for hosting your web application content.
-
-[Terraforge Deployment Doc](DEPLOYMENT.md)
+To get started with TerraForge, follow the steps in the following documentation: [Terraforge Deployment Doc](DEPLOYMENT.md)
