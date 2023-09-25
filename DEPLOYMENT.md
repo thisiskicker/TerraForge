@@ -17,15 +17,18 @@
 ### 1. Configure Terraform Cloud
 
 a. Create Organization
+
 b. Create 3 Workspaces:
    - Terraforge-Cluster
    - Terraforge-Services
    - Terraforge-App
+
 c. Configure a Variable Set (All Sensitive) - Azure Details:
    - ARM_CLIENT_ID
    - ARM_CLIENT_SECRET
    - ARM_SUBSCRIPTION_ID
    - ARM_TENANT_ID
+   
 d. Configure Workspace Variables:
    - **Terraforge-Cluster**
      1. cluster_name
