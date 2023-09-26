@@ -15,6 +15,11 @@
 - Managed Service Identities (MSIs) only function within Azure or GitHub environments.
 - When trying to pass the kubeconfig through Terraform Cloud, it can be a bit more challenging and less reliable. In such cases, using a service principal is advised, especially when interacting with the Azure API from outside of Azure or GitHub.
 
+##Azure - Nginx Ingress
+
+- Adding this annotation to the nginx helm install is required to get the azure health check to probe the correct endpoint. If not nginx ingress will not work.
+  ```service.beta.kubernetes.io/azure-load-balancer-health-probe-request-path: /healthz```
+
 ## Terraform
 
 - The TLS provider in Terraform simplifies the installation of Linkerd by allowing the generation and management of CA and root TLS certificates directly within Terraform, eliminating the need to manually generate and reference certificate files.
