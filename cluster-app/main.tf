@@ -9,14 +9,14 @@ resource "kubernetes_namespace" "terraforge" {
   }
 }
 
-#use helm to install the terraforge app
-resource "helm_release" "terraforge-app" {
-  name       = "terraforge-app"
-  repository = "${path.module}"
-  chart      = "terraforge-app-chart"
-  namespace = kubernetes_namespace.terraforge.metadata[0].name
-  #create_namespace = true
-}
+# #use helm to install the terraforge app
+# resource "helm_release" "terraforge-app" {
+#   name       = "terraforge-app"
+#   repository = "${path.module}"
+#   chart      = "terraforge-app-chart"
+#   namespace = kubernetes_namespace.terraforge.metadata[0].name
+#   #create_namespace = true
+# }
 
 # #create staging cluster issuer
 # resource "kubectl_manifest" "cluster_issuer_staging" {
